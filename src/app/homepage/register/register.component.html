@@ -8,38 +8,57 @@
         </div>
     </div>
     <div class="row mt-1 mt-md-5">
-        <form [formGroup]="register" (ngSubmit)="onSubmit()" class="">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="">
             <div class="col-12 col-md-4 my-2">
                 <input id="name" type="text" placeholder="Name :" class="form-control" formControlName="name" required>
+                <div *ngIf="registerForm.get('name')?.touched">
+                    <small *ngIf="registerForm.get('name')?.hasError('required')">* Name is required</small>
+                    <small *ngIf="registerForm.get('name')?.hasError('minlength') || registerForm.get('name')?.hasError('maxlength')">* Name should be between 5-25 characters</small>
+                </div>
             </div>
             <div class="col-12 col-md-4 my-2">
-                <input id="contact" type="tel" placeholder="Contact No. :" class="form-control" formControlName="contact">
+                <input id="contact" type="text" placeholder="Contact No. :" class="form-control" formControlName="contact">
+                <div *ngIf="registerForm.get('contact')?.touched">
+                    <small *ngIf="registerForm.get('contact')?.hasError('required')">* Contact is required</small>
+                    <small *ngIf="registerForm.get('contact')?.hasError('pattern')">* Please enter a valid contact</small>
+                </div>
             </div>
             <div class="col-12 col-md-4 my-2">                
-                <label class="form-label" for="radio">You are a new :</label>
+                <label class="form-label" for="radio"><b>You are a new :</b></label>
                 <div class="form-check d-flex justify-content-around">
-                    <div class="cust">
-                        <input class="form-check-input" type="radio" class="form-control-radio" name="type" id="customer" formControlName="cust">
-                        <label class="form-check-label" for="customer">
-                            Customer
-                        </label>
-                    </div>
-                    <div class="supp">
-                        <input class="form-check-input" type="radio" class="form-control-radio" name="type" id="supplier" formControlName="supp">
-                        <label class="form-check-label" for="supplier">
-                            Supplier
-                        </label>
-                    </div>                    
+                    <label>
+                        <input type="radio" formControlName="type" value="cust" > Customer
+                    </label>
+                    <label>
+                        <input type="radio" formControlName="type" value="supp"> Supplier
+                    </label>                    
+                </div>
+                <div *ngIf="registerForm.get('type')?.touched">
+                    <small *ngIf="registerForm.get('type')?.hasError('required')">* User type is required</small>
+                    <!-- <small *ngIf="registerForm.get('type')?.hasError('pattern')">* Please enter a valid contact</small> -->
                 </div>
             </div>
             <div class="col-12 col-md-4 my-2">
                 <input id="uname" type="text" placeholder="Username :" class="form-control" formControlName="uname" required>
+                <div *ngIf="registerForm.get('uname')?.touched">
+                    <small *ngIf="registerForm.get('uname')?.hasError('required')">* Name is required</small>
+                    <small *ngIf="registerForm.get('uname')?.hasError('minlength') || registerForm.get('uname')?.hasError('maxlength')">* Username should be between 5-25 characters</small>
+                </div>
             </div>
             <div class="col-12 col-md-4 my-2">
-                <input id="pword" type="text" placeholder="Password :" class="form-control" formControlName="pword" required>
+                <input id="pword" type="password" placeholder="Password :" class="form-control" formControlName="pword" required>
+                <div *ngIf="registerForm.get('pword')?.touched">
+                    <small *ngIf="registerForm.get('pword')?.hasError('required')">* Name is required</small>
+                    <small *ngIf="registerForm.get('pword')?.hasError('minlength') || registerForm.get('pword')?.hasError('maxlength')">* Password should be between 5-25 characters</small>
+                </div>
             </div>
             <div class="col-12 col-md-4 my-2">
-                <input id="pword1" type="text" placeholder="Retype Passsword :" class="form-control" formControlName="pword1" required>
+                <input id="pword1" type="password" placeholder="Retype Passsword :" class="form-control" formControlName="pword1" required>
+                <div *ngIf="registerForm.get('pword1')?.touched">
+                    <small *ngIf="registerForm.get('pword1')?.hasError('required')">* Name is required</small>
+                    <small *ngIf="registerForm.get('pword1')?.hasError('minlength') || registerForm.get('pword1')?.hasError('maxlength')">* Retyped password should be between 5-25 characters</small>
+                    <small *ngIf="registerForm.get('pword1')?.value !== registerForm.get('pword')?.value">* Retyped password doesn't match password</small>
+                </div>
             </div>
             <div class="col-12 col-md-4 my-2 text-center">
                 <button class="btn" type="submit">Register Now</button>
@@ -47,6 +66,19 @@
         </form>
     </div>
 </div>
+
+<!-- Response Toast -->
+<div class="toast-container">
+    <div id="registerResponseToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header" style="float: right;">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ toastmessage }}
+      </div>
+    </div>
+</div>
+
 <router-outlet></router-outlet>
 
 
