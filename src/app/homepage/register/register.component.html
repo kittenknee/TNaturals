@@ -1,1 +1,78 @@
-<p>Register page works!</p>
+<div class="container justify-content-center">
+    <div class="row mt-1 mt-md-5 my-2 justify-content-center">
+        <div class="col-6 col-md-2 text-center">
+            <a class="nav-link" routerLink="/signin" routerLinkActive="">Sign In</a>
+        </div>
+        <div class="col-6 col-md-2 text-center">
+            <a class="nav-link" routerLink="/register" routerLinkActive="">Register</a>
+        </div>
+    </div>
+    <div class="row mt-1 mt-md-5">
+        <form [formGroup]="register" (ngSubmit)="onSubmit()" class="">
+            <div class="col-12 col-md-4 my-2">
+                <input id="name" type="text" placeholder="Name :" class="form-control" formControlName="name" required>
+            </div>
+            <div class="col-12 col-md-4 my-2">
+                <input id="contact" type="tel" placeholder="Contact No. :" class="form-control" formControlName="contact">
+            </div>
+            <div class="col-12 col-md-4 my-2">                
+                <label class="form-label" for="radio">You are a new :</label>
+                <div class="form-check d-flex justify-content-around">
+                    <div class="cust">
+                        <input class="form-check-input" type="radio" class="form-control-radio" name="type" id="customer" formControlName="cust">
+                        <label class="form-check-label" for="customer">
+                            Customer
+                        </label>
+                    </div>
+                    <div class="supp">
+                        <input class="form-check-input" type="radio" class="form-control-radio" name="type" id="supplier" formControlName="supp">
+                        <label class="form-check-label" for="supplier">
+                            Supplier
+                        </label>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-12 col-md-4 my-2">
+                <input id="uname" type="text" placeholder="Username :" class="form-control" formControlName="uname" required>
+            </div>
+            <div class="col-12 col-md-4 my-2">
+                <input id="pword" type="text" placeholder="Password :" class="form-control" formControlName="pword" required>
+            </div>
+            <div class="col-12 col-md-4 my-2">
+                <input id="pword1" type="text" placeholder="Retype Passsword :" class="form-control" formControlName="pword1" required>
+            </div>
+            <div class="col-12 col-md-4 my-2 text-center">
+                <button class="btn" type="submit">Register Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+
+<!-- <div class="center">
+    
+    <form name="register" action="register.php" method="post" autocomplete="off">
+        <div class="creds">
+        <input type="text" placeholder="Name:" name="name" required onchange="verifyName()">
+        </div>
+        <div class="creds">
+        <input type="tel" placeholder="Contact:" name="contact" pattern="[0-9]{10}" required onchange="verifyContact()">
+        </div>
+        <div class="radio">
+        <input type="radio" name="user" value="cust" required>Customer
+        &nbsp;
+        <input type="radio" name="user" value="supp" required>Supplier
+        </div>
+        <div class="creds">
+        <input type="text" placeholder="Username:" name="uname" required onchange="verifyUname()">
+        </div>
+        <div class="creds">
+        <input type="password" placeholder="Password:" name="pass" required onchange="verifyPass()">
+        </div>
+        <div class="creds">
+        <input type="password" placeholder="Re-Enter Password:" name="pass1" required onchange="verifyPassword()">
+        </div>
+        <input type="Submit" value="Register" id="submit">
+    </form>
+</div> -->

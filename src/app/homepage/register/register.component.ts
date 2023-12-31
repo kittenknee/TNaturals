@@ -1,19 +1,40 @@
-import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    RouterModule,
+    ReactiveFormsModule,
+    NavbarComponent,
     RouterOutlet,
     RouterLink,
-    NavbarComponent
+    RouterLinkActive
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+
+  register = new FormGroup({
+    name: new FormControl(''),
+    contact: new FormControl(''),
+    type: new FormControl(''),
+    cust: new FormControl(''),
+    supp: new FormControl(''),
+    uname: new FormControl(''),
+    pword: new FormControl(''),
+    pword1: new FormControl('')
+  });
+
+  onSubmit(){
+
+  }
+
+  ngOnInit(): void {
+      
+  }
 
 }
