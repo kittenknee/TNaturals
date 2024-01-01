@@ -1,0 +1,39 @@
+.container{
+    .top-menu{
+        .col-6{
+            border: 2px solid rgb(1, 85, 1);
+            background-color: rgb(67,173,67);
+            box-shadow: 0 0 10px #36454F;
+            padding: .7em .5em;
+            font-size: 20px;
+            color: #000;            
+        }
+        .signin{
+            border-radius: 20px 0 0 0;
+        }
+        .reg{
+            border-radius: 0 20px 0 0;
+        }
+    }
+    .row{
+        .col-12{
+            .regForm{
+                padding: 1em .5em;
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 2px solid rgb(1, 85, 1);
+                // border-top: none !important;
+                border-radius: 0 0 20px 20px;
+                box-shadow: 0 0 10px #36454F;
+                small{
+                    color: #f00;
+                }
+                .btnSubmit{
+                    padding: .5em .5em;
+                    border: 2px solid rgb(1, 85, 1);
+                    background-color: rgb(67,173,67);
+                    color: #000;
+                }
+            }
+        }        
+    }
+}

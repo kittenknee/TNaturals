@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
+// import { PhpCommandsService } from '../../php-executions/php-commands.service';
+import { HttpClientModule } from '@angular/common/http';
 
 declare var bootstrap: any;
 
@@ -11,25 +12,60 @@ declare var bootstrap: any;
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    NavbarComponent,
+    ReactiveFormsModule,    
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    HttpClientModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
+  viewPword = true;
+  viewRPword = true;
   registerForm!: FormGroup;
   toastmessage!: string;
 
   constructor(private fb: FormBuilder){}
 
+  viewPass(){
+    const x = document.getElementById("pword") as HTMLInputElement;
+    x.type = "text";
+    this.viewPword = false;
+  }
+  hidePass(){
+    const x = document.getElementById("pword") as HTMLInputElement;
+    x.type = "password";
+    this.viewPword = true;
+  }
+
+  viewRPass(){
+    const x = document.getElementById("pword1") as HTMLInputElement;
+    x.type = "text";
+    this.viewRPword = false;
+  }
+
+  hideRPass(){
+    const x = document.getElementById("pword1") as HTMLInputElement;
+    x.type = "password";
+    this.viewRPword = true;
+  }
+
   onSubmit(){
     if(this.registerForm.valid){
       console.table(this.registerForm.value);
       // Add more functions here
+      const regFormData = new FormData();
+      regFormData.append('name', this.registerForm.value.name);
+      regFormData.append('contact', this.registerForm.value.contact);
+      regFormData.append('type', this.registerForm.value.type);
+      regFormData.append('uname', this.registerForm.value.uname);
+      regFormData.append('pword', this.registerForm.value.pword);
+      regFormData.append('pword1', this.registerForm.value.pword1);
+
+      // this.phpQueries.registerUser(regFormData);
+
       this.toast("some data");
       this.registerForm.reset();
     }
