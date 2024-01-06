@@ -1,3 +1,22 @@
+<section>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <!-- Response Toast -->
+                <div class="toast-container">
+                    <div id="registerResponseToast" class="toast d-flex justify-content-between"  [ngClass]="{'successColor': success, 'errorColor': !success}" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body w-100">
+                        {{ toastmessage }}
+                        </div>
+                        <div class="toast-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container my-5 justify-content-center">
     <div class="row mt-1 mt-md-5 justify-content-center top-menu">
         <div class="col-6 col-md-2 text-center signin">
@@ -47,14 +66,26 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-12 my-2 d-grid">
-                        <input id="pword" type="password" placeholder="Password :" class="form-control" formControlName="pword" required><i class="bi bi-eye" *ngIf="viewPword" (click)="viewPass()"></i><i class="bi bi-eye-slash" *ngIf="!viewPword" (click)="hidePass()"></i>
+                        <div class="d-flex">
+                            <input id="pword" type="password" placeholder="Password :" class="form-control" formControlName="pword" required>
+                            <div class="px-3 py-2 viewhide">
+                                <i class="bi bi-eye" *ngIf="viewPword" (click)="viewPass()"></i>
+                                <i class="bi bi-eye-slash" *ngIf="!viewPword" (click)="hidePass()"></i>
+                            </div>
+                        </div>
                         <div *ngIf="registerForm.get('pword')?.touched">
                             <small *ngIf="registerForm.get('pword')?.hasError('required')"><i class="bi bi-exclamation-triangle-fill"></i> Password is required</small>
                             <small *ngIf="registerForm.get('pword')?.hasError('minlength') || registerForm.get('pword')?.hasError('maxlength')"><i class="bi bi-exclamation-triangle-fill"></i> Password should be between 5-25 characters</small>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 my-2">
-                        <input id="pword1" type="password" placeholder="Retype Passsword :" class="form-control" formControlName="pword1" required><i class="bi bi-eye" *ngIf="viewRPword" (click)="viewRPass()"></i><i class="bi bi-eye-slash" *ngIf="!viewRPword" (click)="hideRPass()"></i>
+                        <div class="d-flex">
+                            <input id="pword1" type="password" placeholder="Retype Passsword :" class="form-control" formControlName="pword1" required>
+                            <div class="px-3 py-2 viewhide">
+                                <i class="bi bi-eye" *ngIf="viewRPword" (click)="viewRPass()"></i>
+                                <i class="bi bi-eye-slash" *ngIf="!viewRPword" (click)="hideRPass()"></i>
+                            </div>
+                        </div>
                         <div *ngIf="registerForm.get('pword1')?.touched">
                             <small *ngIf="registerForm.get('pword1')?.hasError('required')"><i class="bi bi-exclamation-triangle-fill"></i> Retyped password is required</small>
                             <small *ngIf="registerForm.get('pword1')?.hasError('minlength') || registerForm.get('pword1')?.hasError('maxlength')"><i class="bi bi-exclamation-triangle-fill"></i> Retyped password should be between 5-25 characters</small>
@@ -66,20 +97,7 @@
                     </div>
                 </form>
             </div>
-        </div>
-        
-    </div>
-</div>
-
-<!-- Response Toast -->
-<div class="toast-container">
-    <div id="registerResponseToast" class="toast d-flex justify-content-between" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
-          {{ toastmessage }}
-        </div>
-      <div class="toast-header">
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
+        </div>        
     </div>
 </div>
 

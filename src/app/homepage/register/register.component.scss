@@ -1,4 +1,29 @@
 .container{
+    .row{
+        .col-3{
+            .toast-container{
+                #registerResponseToast{
+                    .toast-header{
+                        background-color: transparent;
+                    }
+                }
+                .successColor{                    
+                    border-radius: 10px;
+                    border: 2px solid #080;
+                    background-color: rgba(0, 136, 0, 0.5);
+                    color: #080;
+                    font-size: 16px;
+                }
+                .errorColor{
+                    border-radius: 10px;
+                    border: 2px solid #f00;
+                    background-color: rgba(255, 0, 0, 0.4);
+                    color: #f00;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
     .top-menu{
         .col-6{
             border: 2px solid rgb(1, 85, 1);
@@ -24,6 +49,16 @@
                 // border-top: none !important;
                 border-radius: 0 0 20px 20px;
                 box-shadow: 0 0 10px #36454F;
+                #pword, #pword1{
+                    border-radius: 7px 0 0 7px;
+                }
+                .viewhide{
+                    text-align: center;
+                    vertical-align: middle;
+                    background-color: #e9ecef;
+                    border: 1px solid #dfe3e7;
+                    border-radius: 0 7px 7px 0;
+                }
                 small{
                     color: #f00;
                 }

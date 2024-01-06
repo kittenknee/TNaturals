@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 // import { PhpCommandsService } from '../../php-executions/php-commands.service';
 import { HttpClientModule } from '@angular/common/http';
+// import { UsersService } from '../../services/users.service';
 
 declare var bootstrap: any;
 
@@ -21,13 +22,15 @@ declare var bootstrap: any;
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
+@Injectable()
 export class RegisterComponent implements OnInit {
   viewPword = true;
   viewRPword = true;
   registerForm!: FormGroup;
+  success: boolean = false;
   toastmessage!: string;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder){} //, private userService: UsersService
 
   viewPass(){
     const x = document.getElementById("pword") as HTMLInputElement;
@@ -39,13 +42,11 @@ export class RegisterComponent implements OnInit {
     x.type = "password";
     this.viewPword = true;
   }
-
   viewRPass(){
     const x = document.getElementById("pword1") as HTMLInputElement;
     x.type = "text";
     this.viewRPword = false;
   }
-
   hideRPass(){
     const x = document.getElementById("pword1") as HTMLInputElement;
     x.type = "password";
@@ -56,16 +57,7 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid){
       console.table(this.registerForm.value);
       // Add more functions here
-      const regFormData = new FormData();
-      regFormData.append('name', this.registerForm.value.name);
-      regFormData.append('contact', this.registerForm.value.contact);
-      regFormData.append('type', this.registerForm.value.type);
-      regFormData.append('uname', this.registerForm.value.uname);
-      regFormData.append('pword', this.registerForm.value.pword);
-      regFormData.append('pword1', this.registerForm.value.pword1);
-
-      // this.phpQueries.registerUser(regFormData);
-
+      // this.userService.addUserCreds(this.registerForm.value);
       this.toast("some data");
       this.registerForm.reset();
     }

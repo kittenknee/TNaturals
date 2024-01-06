@@ -1,0 +1,76 @@
+{
+  "credentials": [
+    {
+      "id": 1,
+      "userID": 1,
+      "name": "Administrator",
+      "contact": "1234567890",
+      "type": "none",
+      "uname": "admin",
+      "pass": "admin123",
+      "pass1": "admin123"
+    }
+  ],
+  "user_details": [
+    {
+      "id": 1,
+      "userID": 1,
+      "fname": "Admin",
+      "lname": "istrator",
+      "contact": "1234567890",
+      "email": "admin@administration.com",
+      "fadd": "Number, Building name",
+      "sadd": "Street name, Location name",
+      "tadd": "City, State",
+      "lmark": "Near to some landmark"
+    }
+  ],
+  "inventory": [
+    {
+      "id": 1,
+      "itemID": "C1F001",
+      "category": "Flour",
+      "itemname": "Lokwan Wheat Flour",
+      "quantity": 2,
+      "weight": "kg",
+      "units": 50,
+      "price": 110
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "userID": "C1F001",
+      "transID": "Flour",
+      "uname": "Lokwan Wheat Flour",
+      "user": 2,
+      "list": [
+        {
+          "id": 1,
+          "itemID": "C1F001",
+          "category": "Flour",
+          "itemname": "Lokwan Wheat Flour",
+          "quantity": 2,
+          "weight": "kg",
+          "units": 50,
+          "price": 110
+        }
+      ],
+      "totalunits": "kg",
+      "totalamount": 50,
+      "date": 110,
+      "status": 110
+    }
+  ],
+  "admin_orders": [
+    {
+      "id": 1,
+      "itemID": "C1F001",
+      "itemname": "Lokwan Wheat Flour",
+      "itemquantity": 2,
+      "itemweight": "kg",
+      "itemunits": 50,
+      "itemprice": 110
+    }
+  ]
+}
